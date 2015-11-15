@@ -1,1 +1,1 @@
-//= require ./components/sample.js
+//= require ./components/
