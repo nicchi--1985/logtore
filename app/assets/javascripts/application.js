@@ -16,4 +16,8 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require moment
+//= require tether
+//= require react-date-picker
+//= require react-onclickoutside
 //= require_tree .

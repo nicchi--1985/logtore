@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jwhitley/requirejs-rails.git
+  revision: a4b635928dc1545ff8104dca67521816be840225
+  specs:
+    requirejs-rails (0.9.9)
+      railties (>= 3.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,12 +44,13 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    babel-source (5.8.33)
+    babel-source (5.8.34)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bower-rails (0.10.0)
     builder (3.2.2)
     byebug (8.0.0)
     capistrano (3.2.1)
@@ -219,6 +227,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bower-rails
   byebug
   capistrano (~> 3.2.1)
   capistrano-bundler
@@ -235,7 +244,8 @@ DEPENDENCIES
   pry-rails
   pry-stack_explorer
   rails (= 4.2.4)
-  react-rails (~> 1.0)
+  react-rails (~> 1.4.0)
+  requirejs-rails!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   slim-rails
