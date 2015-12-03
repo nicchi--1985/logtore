@@ -1,0 +1,31 @@
+{
+  "name": "logtore",
+  "version": "0.0.0",
+  "description": "log trading platform",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "coffeeify": "~1.2.0",
+    "browserify": "~10.2.6",
+    "reactify": "~1.1.1"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.6",
+    "browserify-incremental": "^3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicchi--1985/logtore.git"
+  },
+  "author": "nicchi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicchi--1985/logtore/issues"
+  },
+  "homepage": "https://github.com/nicchi--1985/logtore"
+}

@@ -20,4 +20,3 @@
 //= require tether
 //= require react-date-picker
 //= require react-onclickoutside
-//= require_tree .

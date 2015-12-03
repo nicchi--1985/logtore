@@ -36,8 +36,8 @@ gem 'unicorn'
 gem 'slim-rails'
 gem 'dotenv-rails'
 gem 'react-rails', '~> 1.4.0'
+gem 'browserify-rails', '~>0.5'
 gem 'bower-rails'
-gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

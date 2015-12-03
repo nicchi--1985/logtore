@@ -18,3 +18,7 @@
 
 # Ignore bower
 /vendor/assets/bower_components/*
+
+# Ignore nodes
+/node_modules
+
