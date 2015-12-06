@@ -8,34 +8,44 @@ BasisForm = require('./basis_form')
 class TradeLogForm extends React.Component
   constructor: (props) ->
     super(props)
-    @state = selectedProduct: null
-    console.log @state
+    @state = {
+              selectedProduct: null,
+              bases: ["basis_1"]
+            }
 
   productSelected: (e) =>
     console.log @props
     selectedProduct = e.target.value
     @setState selectedProduct: selectedProduct
     console.log "product-> " + selectedProduct + " was selected!"
-    console.log e.target.value
+
+  addBasis: (e) =>
+    console.log "addBasis triggered"
+    bases = @state.bases
+    next_basis = "basis_" + (bases.length + 1)
+    bases.push next_basis
+    @setState bases: bases
 
   render: ->
     selectedProduct = (()=>
         console.log "is selected ->" + @state.selectedProduct
+        bases = @state.bases
+        addBasis = @addBasis
         switch @state.selectedProduct
           when null
             `<div>select your product</div>`
           when "0"
             `<div><StockForm />
-            <BasisForm /></div>`
+            <BasisForm addBasis={addBasis} bases={bases} /></div>`
           when "1"
             `<div><FutureForm />
-            <BasisForm /></div>`
+            <BasisForm addBasis={addBasis} bases={bases} /></div>`
           when "2"
             `<div><OptionForm />
-            <BasisForm /></div>`
+            <BasisForm addBasis={addBasis} bases={bases} /></div>`
           when "3"
             `<div><ExchangeForm />
-            <BasisForm /></div>`
+            <BasisForm addBasis={addBasis} bases={bases} /></div>`
           else
             `<div>out of range</div>`
       )()
