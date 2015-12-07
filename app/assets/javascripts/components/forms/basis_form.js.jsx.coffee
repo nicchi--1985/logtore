@@ -1,16 +1,25 @@
 class BasisForm extends React.Component
   constructor: (props) ->
     super props
+    @bases = []
 
-  render: ->
-    bases = @props.bases.map (id) ->
-      `<Basis key={id} />`
+  getBasesToSubmit: =>
+    refIDs = Object.keys(@refs)
+    res = refIDs.map (refID) =>
+      {
+        basis_type: @refs[refID].refs.basis_type.value,
+        text: @refs[refID].refs.basis_text.value
+      }
+    return res
+
+  render: =>
+    @bases = @props.bases.map (id) ->
+      `<Basis key={id} ref={id} />`
 
     `<div>
       <h4>this is BasisForm</h4>
-      {bases}
+      {this.bases}
       <input type="button" value="+" onClick={this.props.addBasis} />
-      <input type="button" value="記録"/>
     </div>`
 
 class Basis extends React.Component
@@ -19,12 +28,12 @@ class Basis extends React.Component
 
   render: ->
     `<div id={this.props.key}>
-      <select>
+      <select ref="basis_type">
         <option value="0">テクニカル</option>
         <option value="1">ファンダメンタルズ</option>
         <option value="2">感情</option>
       </select>
-      <input type="textarea" placeholder="理由" />
+      <input type="textarea" placeholder="理由" ref="basis_text"/>
      </div>`
 
 module.exports = BasisForm
