@@ -1,4 +1,15 @@
-class APIConnector extends React.Component
+###
+AppDispatcher = require('../AppDispatcher')
+AppConstants = require('../AppConstants')
+
+ActionTypes = AppConstants.ActionTypes
+
+module.exports = {
+  
+}
+###
+
+class TradeFormAction extends React.Component
   createTrade: (data) =>
     console.log data
     console.log window.location.protocol
@@ -16,4 +27,4 @@ class APIConnector extends React.Component
         console.error @props.url, status, err.toString()
 
 
-module.exports = APIConnector
+module.exports = TradeFormAction

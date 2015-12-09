@@ -9,7 +9,8 @@
   "dependencies": {
     "coffeeify": "~1.2.0",
     "browserify": "~10.2.6",
-    "reactify": "~1.1.1"
+    "reactify": "~1.1.1",
+    "flux": "^2.1.1"
   },
   "devDependencies": {
     "browserify": "^10.2.6",

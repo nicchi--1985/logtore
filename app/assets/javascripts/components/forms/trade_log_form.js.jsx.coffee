@@ -4,7 +4,8 @@ FutureForm = require('./future_form')
 OptionForm = require('./option_form')
 ExchangeForm = require('./exchange_form')
 BasisForm = require('./basis_form')
-APIConnector = require('../../actions/APIConnector')
+#TradeFormAction = require('../../actions/TradeFormAction')
+
 
 class TradeLogForm extends React.Component
   constructor: (props) ->
@@ -13,7 +14,6 @@ class TradeLogForm extends React.Component
               selectedProduct: null,
               bases: ["basis_1"]
             }
-    @api = new APIConnector()
 
   productSelected: (e) =>
     console.log @props
