@@ -1,40 +1,48 @@
 AppDispatcher = require('../AppDispatcher')
-ActionCreator = require('../actions/ActionCreator.coffee')
+http = require('http')
 
-fetchTrades = () ->
-  console.log "Api.fetchTrades!!!!!"
-  $.ajax
-      url: window.location.origin + "/api/trades"
-      dataType: 'json'
-      type: 'GET'
-    .done (data) =>
-      console.log ActionCreator
-      ActionCreator.recieveTrades(data)
-    .fail (xhr, status, err) =>
-      console.error @props.url, status, err.toString()
+console.log "API!!!!!"
+module.exports = {
+  fetchTrades: () ->
+    new Promise (resolve, reject) ->
+      $.ajax
+          url: window.location.origin + "/api/trades"
+          dataType: 'json'
+          type: 'GET'
+        .done (data) =>
+          resolve(data)
+        .fail (xhr, status, err) =>
+          reject(xhr, status, err)
 
-createTrade = (data) ->
-  console.log "API.createTrade"
-  $.ajax
-      url: window.location.origin + "/api/trades"
-      dataType: 'json'
-      type: 'POST'
-      data: data
-    .done (data) =>
-      ActionCreator.recieveTrades(data)
-    .fail (xhr, status, err) =>
-      console.error @props.url, status, err.toString()
 
+  createTrade: (postdata) ->
+    console.log "API.createTrade"
+    new Promise (resolve, reject) ->
+      $.ajax
+          url: window.location.origin + "/api/trades"
+          dataType: 'json'
+          type: 'POST'
+          data: postdata
+        .done (data) =>
+          resolve(data)
+        .fail (xhr, status, err) =>
+          reject(xhr, status, err)
+}
+###
 AppDispatcher.register((payload) =>
+    console.log "dispatch"
+    console.log payload
     switch payload.action.type
       when 'FETCH_TRADES'
         console.log "FETCH_TRADES"
         fetchTrades()
+        break
       when 'CREATE_TRADES'
         console.log "CREATE_TRADES"
         createTrade(payload.action.data)
+        break
   )
-
+###
 ###
 console.log "aaaaaaaaaaaaaaaaa"
 console.log ActionCreator

@@ -7,7 +7,6 @@ _trades = []
 
 setTrades = (data) ->
   console.log "TradeStrore.setTrades"
-  console.log data
   _trades = data
 
 class TradeStore extends EventEmitter
@@ -24,8 +23,7 @@ class TradeStore extends EventEmitter
     @removeListener(CHANGE_TRADE, callback)
 
   @getTrades: ->
-    console.log "getting trades! " + @trades
-    console.log _trades
+    console.log "getting trades! "
     return _trades
 
 AppDispatcher.register((payload) ->

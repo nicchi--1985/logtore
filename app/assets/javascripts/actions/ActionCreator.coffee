@@ -1,18 +1,15 @@
 AppDispatcher = require('../AppDispatcher')
-
-
+Api = require('../utils/Api.coffee')
 
 module.exports = {
   # method for server
   fetchTrades: () ->
     console.log "ActionCreator.fetchTrades()"
-    AppDispatcher.dispatch({
-        source: 'SERVER_ACTION',
-        action: {
-          type: 'FETCH_TRADES',
-          data: ""
-        }
-      })
+    Api.fetchTrades()
+      .then (data) =>
+        @recieveTrades(data)
+      .catch (xhr, status, err) ->
+        console.error xhr, status, err.toString()
 
   recieveTrades: (json) ->
     AppDispatcher.dispatch({
@@ -24,6 +21,12 @@ module.exports = {
       })
 
   createTrade: (postdata) ->
+    Api.createTrade(postdata)
+      .then (data) =>
+        @recieveTrades(data)
+      .catch (xhr, status, err) ->
+        console.error xhr, status, err.toString()
+    ###
     AppDispatcher.dispatch({
         source: 'SERVER_ACTION',
         action: {
@@ -31,6 +34,7 @@ module.exports = {
           data: postdata
         }
       })
+    ###
 }
 
 

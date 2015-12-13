@@ -10,7 +10,8 @@
     "coffeeify": "~1.2.0",
     "browserify": "~10.2.6",
     "reactify": "~1.1.1",
-    "flux": "^2.1.1"
+    "flux": "^2.1.1",
+    "http": "0.0.0"
   },
   "devDependencies": {
     "browserify": "^10.2.6",

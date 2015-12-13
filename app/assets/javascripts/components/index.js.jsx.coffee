@@ -2,14 +2,17 @@ TradeLogForm = require('./forms/trade_log_form')
 TradeLogTable = require('./trade_log_table')
 ActionCreator = require('../actions/ActionCreator.coffee')
 TradeStore = require('../stores/TradeStore.coffee')
-API = require('../utils/Api.coffee')
+
+console.log TradeStore
 
 class TradeLogContainer extends React.Component
   constructor: (props) ->
     super
+    console.log ActionCreator
     ActionCreator.fetchTrades()
     initData = TradeStore.getTrades()
     @state = {data: initData}
+    console.log "TradeLogContainer.init"
 
   _onChange: =>
     console.log "CHANGE_TRADE!!"
@@ -23,7 +26,7 @@ class TradeLogContainer extends React.Component
     TradeStore.removeListener(@onChange)
 
   createTrade: (data) ->
-    @api.createTrade(data)
+    ActionCreator.createTrade(data)
 
   render: ->
     `<div>
