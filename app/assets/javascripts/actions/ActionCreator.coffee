@@ -1,5 +1,5 @@
 AppDispatcher = require('../AppDispatcher')
-Api = require('../utils/Api.coffee')
+Api = require('../utils/api.coffee')
 
 module.exports = {
   # method for server
