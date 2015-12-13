@@ -31,7 +31,7 @@ class Basis extends React.Component
       <select ref="basis_type">
         <option value="0">テクニカル</option>
         <option value="1">ファンダメンタルズ</option>
-        <option value="2">感情</option>
+        <option value="2">アノマリー</option>
       </select>
       <input type="textarea" placeholder="理由" ref="basis_text"/>
      </div>`

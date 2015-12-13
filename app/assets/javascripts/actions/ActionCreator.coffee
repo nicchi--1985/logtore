@@ -9,7 +9,7 @@ module.exports = {
       .then (data) =>
         @recieveTrades(data)
       .catch (xhr, status, err) ->
-        console.error xhr, status, err.toString()
+        console.error xhr, status, err
 
   recieveTrades: (json) ->
     AppDispatcher.dispatch({
@@ -25,7 +25,7 @@ module.exports = {
       .then (data) =>
         @recieveTrades(data)
       .catch (xhr, status, err) ->
-        console.error xhr, status, err.toString()
+        console.error xhr, status, err
     ###
     AppDispatcher.dispatch({
         source: 'SERVER_ACTION',
