@@ -1,9 +1,9 @@
 module Api
   class TradesController < ApplicationController
     def index
-      @trades = Trade.includes(:tradable, :bases).all()
+      @trades = Trade.all
       #@jtrades = @trades.to_json(:include => [:tradable, :bases])
-      render json: @trades.to_json(:include => [:tradable, :bases])
+      render json: @trades
     end
 
     def create
