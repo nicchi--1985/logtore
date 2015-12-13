@@ -1,6 +1,6 @@
 class TradeLog extends React.Component
   render: ->
-    `<tr key={this.props.trade_id}>
+    `<tr>
       <td>{this.props.trade_id}</td>
       <td>{this.props.implimentation_date}</td>
       <td>{this.props.action_type}</td>

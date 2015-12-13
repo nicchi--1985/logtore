@@ -11,12 +11,14 @@ class TradeLogTable extends React.Component
         "-"
 
   render: ->
+    console.log "rendering table!!"
+    console.log @props.trades
     tradeLogs = @props.trades.map (trade) =>
       strType = @convertStrType(trade.action_type)
       if trade.implimentation_date != null
         imp_date = trade.implimentation_date.substr(0,10)
-      console.log trade
-      `<TradeLog trade_id={trade.id}
+      `<TradeLog key={trade.id}
+                 trade_id={trade.id}
                  implimentation_date={imp_date}
                  action_type={strType}
                  product_type={trade.tradable_type}

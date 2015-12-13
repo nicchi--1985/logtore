@@ -4,6 +4,7 @@ FutureForm = require('./future_form')
 OptionForm = require('./option_form')
 ExchangeForm = require('./exchange_form')
 BasisForm = require('./basis_form')
+API = require('../../utils/api.coffee')
 #TradeFormAction = require('../../actions/TradeFormAction')
 
 
@@ -19,10 +20,10 @@ class TradeLogForm extends React.Component
     console.log @props
     selectedProduct = e.target.value
     @setState selectedProduct: selectedProduct
-    console.log "product-> " + selectedProduct + " was selected!"
+    #console.log "product-> " + selectedProduct + " was selected!"
 
   addBasis: (e) =>
-    console.log "addBasis triggered"
+    #console.log "addBasis triggered"
     bases = @state.bases
     next_basis = "basis_" + (bases.length + 1)
     bases.push next_basis
@@ -40,7 +41,7 @@ class TradeLogForm extends React.Component
     # 必須項目がなければ何もしない
     return unless implimented_date
 
-    @api.createTrade(
+    @props.createTrade(
       trade: {
         user_id: "1",  # FIXME:ログイン機能追加後
         implimentation_date: implimented_date,
@@ -54,11 +55,11 @@ class TradeLogForm extends React.Component
         target_params: target_params
       }
       bases: bases)
-    console.log "submited!!"
+    #console.log "submited!!"
 
   render: ->
     selectedProduct = (()=>
-        console.log "is selected ->" + @state.selectedProduct
+        #console.log "is selected ->" + @state.selectedProduct
         bases = @state.bases
         addBasis = @addBasis
         switch @state.selectedProduct
@@ -84,7 +85,7 @@ class TradeLogForm extends React.Component
         if @state.selectedProduct != null
           `<input type="button" value="記録" onClick={pushedSubmit}/>`
       )()
-    console.log selectedProduct
+    #console.log selectedProduct
     `<div>this is TradeLogForm
       <CommonForm productSelected={this.productSelected} ref="commonForm" />
       {selectedProduct}

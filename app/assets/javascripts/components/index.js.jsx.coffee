@@ -1,26 +1,33 @@
 TradeLogForm = require('./forms/trade_log_form')
 TradeLogTable = require('./trade_log_table')
-API = require('../utils/api.coffee')
+ActionCreator = require('../actions/ActionCreator.coffee')
+TradeStore = require('../stores/TradeStore.coffee')
+API = require('../utils/Api.coffee')
 
 class TradeLogContainer extends React.Component
   constructor: (props) ->
     super
-    @state = {data: []}
+    ActionCreator.fetchTrades()
+    initData = TradeStore.getTrades()
+    @state = {data: initData}
 
-  componentDidMount: ->
-    $.ajax
-        url: window.location.origin + "/api/trades"
-        dataType: 'json'
-        type: 'GET'
-      .done (data) =>
-        console.log data
-        @setState {data: data}
-      .fail (xhr, status, err) =>
-        console.error @props.url, status, err.toString()
+  _onChange: =>
+    console.log "CHANGE_TRADE!!"
+    trades = TradeStore.getTrades()
+    @setState({data: trades})
+
+  componentDidMount: =>
+    TradeStore.addListener(@_onChange)
+
+  componentWillUnmount: =>
+    TradeStore.removeListener(@onChange)
+
+  createTrade: (data) ->
+    @api.createTrade(data)
 
   render: ->
     `<div>
-      <TradeLogForm />
+      <TradeLogForm createTrade={this.createTrade} />
       <TradeLogTable trades={this.state.data} />
     </div>`
 

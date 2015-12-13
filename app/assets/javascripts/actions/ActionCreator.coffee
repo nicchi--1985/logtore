@@ -1,15 +1,21 @@
-###
 AppDispatcher = require('../AppDispatcher')
-AppConstants = require('../AppConstants')
+API = require('../utils/Api.coffee')
 
-ActionTypes = AppConstants.ActionTypes
+class ActionCreator
+  # method for server
+  @fetchTrades: ->
+    console.log "ActionCreator.fetchTrades()"
+    API.fetchTrades(@)
 
-module.exports = {
-  
-}
+  @recieveTrades: (json) ->
+    AppDispatcher.dispatch({
+        source: 'SERVER_ACTION',
+        action: {
+          type: 'RECEIVE_TRADES',
+          trades: json
+        }
+      })
 ###
-
-class TradeFormAction extends React.Component
   createTrade: (data) =>
     console.log data
     console.log window.location.protocol
@@ -26,5 +32,5 @@ class TradeFormAction extends React.Component
       .fail (xhr, status, err) =>
         console.error @props.url, status, err.toString()
 
-
-module.exports = TradeFormAction
+###
+module.exports = ActionCreator
