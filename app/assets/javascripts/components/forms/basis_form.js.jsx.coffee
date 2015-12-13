@@ -12,6 +12,9 @@ class BasisForm extends React.Component
       }
     return res
 
+  clearBasesParams: =>
+    
+
   render: =>
     @bases = @props.bases.map (id) ->
       `<Basis key={id} ref={id} />`

@@ -45,10 +45,20 @@ class TradeLogForm extends React.Component
       bases: @refs.basisForm.getBasesToSubmit()
     }
 
+  clearFormParams: ->
+    @refs.commonForm.refs.implimented_date.value = ""
+    @refs.selectedForm.refs.action_type.value = ""
+    @refs.selectedForm.refs.invest_amount.value = ""
+    @refs.selectedForm.refs.invest_quantity.value = ""
+    @refs.selectedForm.refs.benefit_amount.value = ""
+    @refs.selectedForm.clearTargetParams()
+    @refs.basisForm.clearBasesParams()
+
   pushedSubmit: (e) =>
     postdata = @buildPostData()
     # 必須項目がなければ何もしない
     return unless Validator.validate_trade_post(postdata)
+    @clearFormParams()
     # あとで実装。フォームをクリアする→clearFormParams
     ActionCreator.createTrade(postdata)
 

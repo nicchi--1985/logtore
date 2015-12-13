@@ -10,6 +10,11 @@ class FutureForm extends React.Component
       month: month
     }
 
+  clearTargetParams: =>
+    @refs.index_code.value = ""
+    @refs.year.value = ""
+    @refs.month.value = ""
+
   render: ->
     `<div>
       <h4>this is FutureForm</h4>

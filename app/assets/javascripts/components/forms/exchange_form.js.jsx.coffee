@@ -8,6 +8,10 @@ class ExchangeForm extends React.Component
       quote_currency: quote_currency
     }
 
+  clearTargetParams: =>
+    @refs.base_currency.value = ""
+    @refs.quote_currency.value = ""
+
   render: ->
     `<div>
       <h4>this is ExchangeForm</h4>

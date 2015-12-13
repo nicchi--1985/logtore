@@ -4,6 +4,9 @@ class StockForm extends React.Component
     return unless brand_code
     {brand_code: brand_code}
 
+  clearTargetParams: =>
+    @refs.brand_code.value = ""
+
   render: ->
     `<div>
       <h4>this is StockForm</h4>
