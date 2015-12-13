@@ -4,9 +4,8 @@ FutureForm = require('./future_form')
 OptionForm = require('./option_form')
 ExchangeForm = require('./exchange_form')
 BasisForm = require('./basis_form')
-API = require('../../utils/api.coffee')
-#TradeFormAction = require('../../actions/TradeFormAction')
-
+ActionCreator = require('../../actions/ActionCreator.coffee')
+Validator = require('../../utils/Validator.coffee')
 
 class TradeLogForm extends React.Component
   constructor: (props) ->
@@ -29,33 +28,29 @@ class TradeLogForm extends React.Component
     bases.push next_basis
     @setState bases: bases
 
-  pushedSubmit: (e) =>
-    implimented_date = @refs.commonForm.refs.implimented_date.value
-    action_type = @refs.selectedForm.refs.action_type.value
-    target_type = @state.selectedProduct
-    target_params = @refs.selectedForm.getTargetParams()
-    invest_amount = @refs.selectedForm.refs.invest_amount.value
-    invest_quantity = @refs.selectedForm.refs.invest_quantity.value
-    benefit_amount = @refs.selectedForm.refs.benefit_amount.value
-    bases = @refs.basisForm.getBasesToSubmit()
-    # 必須項目がなければ何もしない
-    return unless implimented_date
-
-    @props.createTrade(
+  buildPostData: ->
+    {
       trade: {
-        user_id: "1",  # FIXME:ログイン機能追加後
-        implimentation_date: implimented_date,
-        action_type: action_type,
-        invest_amount: invest_amount,
-        invest_quantity: invest_quantity,
-        benefit_amount: benefit_amount,
+        user_id: "1",   # FIXME:ログイン機能追加後
+        implimentation_date: @refs.commonForm.refs.implimented_date.value,
+        action_type: @refs.selectedForm.refs.action_type.value,
+        invest_amount: @refs.selectedForm.refs.invest_amount.value,
+        invest_quantity: @refs.selectedForm.refs.invest_quantity.value,
+        benefit_amount: @refs.selectedForm.refs.benefit_amount.value
       },
       product: {
-        tradable_type: target_type,
-        target_params: target_params
-      }
-      bases: bases)
-    #console.log "submited!!"
+        tradable_type: @state.selectedProduct,
+        target_params: @refs.selectedForm.getTargetParams()
+      },
+      bases: @refs.basisForm.getBasesToSubmit()
+    }
+
+  pushedSubmit: (e) =>
+    postdata = @buildPostData()
+    # 必須項目がなければ何もしない
+    return unless Validator.validate_trade_post(postdata)
+    # あとで実装。フォームをクリアする→clearFormParams
+    ActionCreator.createTrade(postdata)
 
   render: ->
     selectedProduct = (()=>

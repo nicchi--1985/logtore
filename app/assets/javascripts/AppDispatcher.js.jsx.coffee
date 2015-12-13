@@ -1,5 +1,6 @@
 Dispatcher = require('flux').Dispatcher
 
+
 ###
 class AppDispatcher extends Dispatcher
   handleViewAction: ->

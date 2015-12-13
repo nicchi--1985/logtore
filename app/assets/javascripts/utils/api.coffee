@@ -1,16 +1,39 @@
+AppDispatcher = require('../AppDispatcher')
 ActionCreator = require('../actions/ActionCreator.coffee')
-console.log ActionCreator
 
-module.exports =
-  fetchTrades: (ActionCreator) ->
-    $.ajax
-        url: window.location.origin + "/api/trades"
-        dataType: 'json'
-        type: 'GET'
-      .done (data) =>
-        ActionCreator.recieveTrades(data)
-      .fail (xhr, status, err) =>
-        console.error @props.url, status, err.toString()
+fetchTrades = () ->
+  console.log "Api.fetchTrades!!!!!"
+  $.ajax
+      url: window.location.origin + "/api/trades"
+      dataType: 'json'
+      type: 'GET'
+    .done (data) =>
+      console.log ActionCreator
+      ActionCreator.recieveTrades(data)
+    .fail (xhr, status, err) =>
+      console.error @props.url, status, err.toString()
+
+createTrade = (data) ->
+  console.log "API.createTrade"
+  $.ajax
+      url: window.location.origin + "/api/trades"
+      dataType: 'json'
+      type: 'POST'
+      data: data
+    .done (data) =>
+      ActionCreator.recieveTrades(data)
+    .fail (xhr, status, err) =>
+      console.error @props.url, status, err.toString()
+
+AppDispatcher.register((payload) =>
+    switch payload.action.type
+      when 'FETCH_TRADES'
+        console.log "FETCH_TRADES"
+        fetchTrades()
+      when 'CREATE_TRADES'
+        console.log "CREATE_TRADES"
+        createTrade(payload.action.data)
+  )
 
 ###
 console.log "aaaaaaaaaaaaaaaaa"

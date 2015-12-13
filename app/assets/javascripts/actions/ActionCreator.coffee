@@ -1,13 +1,20 @@
 AppDispatcher = require('../AppDispatcher')
-API = require('../utils/Api.coffee')
 
-class ActionCreator
+
+
+module.exports = {
   # method for server
-  @fetchTrades: ->
+  fetchTrades: () ->
     console.log "ActionCreator.fetchTrades()"
-    API.fetchTrades(@)
+    AppDispatcher.dispatch({
+        source: 'SERVER_ACTION',
+        action: {
+          type: 'FETCH_TRADES',
+          data: ""
+        }
+      })
 
-  @recieveTrades: (json) ->
+  recieveTrades: (json) ->
     AppDispatcher.dispatch({
         source: 'SERVER_ACTION',
         action: {
@@ -15,8 +22,19 @@ class ActionCreator
           trades: json
         }
       })
+
+  createTrade: (postdata) ->
+    AppDispatcher.dispatch({
+        source: 'SERVER_ACTION',
+        action: {
+          type: 'CREATE_TRADES',
+          data: postdata
+        }
+      })
+}
+
+
 ###
-  createTrade: (data) =>
     console.log data
     console.log window.location.protocol
     console.log window.location.host
@@ -31,6 +49,4 @@ class ActionCreator
         @setState(data: data)
       .fail (xhr, status, err) =>
         console.error @props.url, status, err.toString()
-
 ###
-module.exports = ActionCreator
