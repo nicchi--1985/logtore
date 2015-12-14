@@ -31,7 +31,6 @@ class TradeLog extends React.Component
   render: ->
     product = @createProductLog()
     basis = @createBasisLog()
-    console.log product
 
     `<tr>
       <td>{this.props.trade_id}</td>

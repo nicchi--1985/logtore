@@ -10,23 +10,11 @@ Validator = require('../../utils/Validator.coffee')
 class TradeLogForm extends React.Component
   constructor: (props) ->
     super(props)
-    @state = {
-              selectedProduct: null,
-              bases: ["basis_1"]
-            }
+    @state = {selectedProduct: null}
 
   productSelected: (e) =>
-    console.log @props
     selectedProduct = e.target.value
     @setState selectedProduct: selectedProduct
-    #console.log "product-> " + selectedProduct + " was selected!"
-
-  addBasis: (e) =>
-    #console.log "addBasis triggered"
-    bases = @state.bases
-    next_basis = "basis_" + (bases.length + 1)
-    bases.push next_basis
-    @setState bases: bases
 
   buildPostData: ->
     {
@@ -39,7 +27,7 @@ class TradeLogForm extends React.Component
         benefit_amount: @refs.selectedForm.refs.benefit_amount.value
       },
       product: {
-        tradable_type: @state.selectedProduct,
+        tradable_type: @props.selectedProduct,
         target_params: @refs.selectedForm.getTargetParams()
       },
       bases: @refs.basisForm.getBasesToSubmit()
@@ -54,7 +42,7 @@ class TradeLogForm extends React.Component
     @refs.selectedForm.clearTargetParams()
     @refs.basisForm.clearBasesParams()
 
-  pushedSubmit: (e) =>
+  submitForm: (e) =>
     postdata = @buildPostData()
     # 必須項目がなければ何もしない
     return unless Validator.validate_trade_post(postdata)
@@ -62,39 +50,47 @@ class TradeLogForm extends React.Component
     # あとで実装。フォームをクリアする→clearFormParams
     ActionCreator.createTrade(postdata)
 
+  createSelectedProductForm: =>
+    switch @state.selectedProduct
+      when null
+        `<div>select your product</div>`
+      when "stock"
+        `<div>
+          <StockForm ref="selectedForm" />
+          {this.renderBasisForm()}
+          {this.renderSubmitBtn()}
+        </div>`
+      when "future"
+        `<div>
+          <FutureForm ref="selectedForm" />
+          {this.renderBasisForm()}
+          {this.renderSubmitBtn()}
+        </div>`
+      when "option"
+        `<div>
+          <OptionForm ref="selectedForm" />
+          {this.renderBasisForm()}
+          {this.renderSubmitBtn()}
+        </div>`
+      when "exchange"
+        `<div>
+          <ExchangeForm ref="selectedForm" />
+          {this.renderBasisForm()}
+          {this.renderSubmitBtn()}
+        </div>`
+      else
+        `<div>out of range</div>`
+
+  renderBasisForm: =>
+    `<BasisForm ref="basisForm" />`
+
+  renderSubmitBtn: =>
+    `<input type="button" value="記録" onClick={this.submitForm}/>`
+
   render: ->
-    selectedProduct = (()=>
-        #console.log "is selected ->" + @state.selectedProduct
-        bases = @state.bases
-        addBasis = @addBasis
-        switch @state.selectedProduct
-          when null
-            `<div>select your product</div>`
-          when "stock"
-            `<div><StockForm ref="selectedForm" />
-            <BasisForm addBasis={addBasis} bases={bases} ref="basisForm" /></div>`
-          when "future"
-            `<div><FutureForm ref="selectedForm" />
-            <BasisForm addBasis={addBasis} bases={bases} ref="basisForm" /></div>`
-          when "option"
-            `<div><OptionForm ref="selectedForm" />
-            <BasisForm addBasis={addBasis} bases={bases} ref="basisForm" /></div>`
-          when "exchange"
-            `<div><ExchangeForm ref="selectedForm" />
-            <BasisForm addBasis={addBasis} bases={bases} ref="basisForm" /></div>`
-          else
-            `<div>out of range</div>`
-      )()
-    submitBtn = (()=>
-        pushedSubmit = @pushedSubmit
-        if @state.selectedProduct != null
-          `<input type="button" value="記録" onClick={pushedSubmit}/>`
-      )()
-    #console.log selectedProduct
     `<div>this is TradeLogForm
       <CommonForm productSelected={this.productSelected} ref="commonForm" />
-      {selectedProduct}
-      {submitBtn}
+      {this.createSelectedProductForm()}
      </div>`
 
 module.exports = TradeLogForm

@@ -10,9 +10,7 @@ class TradeLogContainer extends React.Component
     super
     console.log ActionCreator
     ActionCreator.fetchTrades()
-    initData = TradeStore.getTrades()
-    @state = {data: initData}
-    console.log "TradeLogContainer.init"
+    @state = {data: TradeStore.getTrades()}
 
   _onChange: =>
     console.log "CHANGE_TRADE!!"

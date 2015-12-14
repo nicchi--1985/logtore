@@ -5,7 +5,7 @@ class StockForm extends React.Component
     {brand_code: brand_code}
 
   clearTargetParams: =>
-    @refs.brand_code.value = ""
+    @replaceState bases: ["basis_1"]
 
   render: ->
     `<div>

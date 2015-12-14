@@ -1,7 +1,7 @@
 class BasisForm extends React.Component
   constructor: (props) ->
     super props
-    @bases = []
+    @state = {bases: ["basis_1"]}
 
   getBasesToSubmit: =>
     refIDs = Object.keys(@refs)
@@ -13,16 +13,21 @@ class BasisForm extends React.Component
     return res
 
   clearBasesParams: =>
-    
+
+  addBasis: (e) =>
+    bases = @props.bases
+    next_basis = "basis_" + (bases.length + 1)
+    bases.push next_basis
+    @setState bases: bases
 
   render: =>
-    @bases = @props.bases.map (id) ->
+    bases = @state.bases.map (id) ->
       `<Basis key={id} ref={id} />`
 
     `<div>
       <h4>this is BasisForm</h4>
-      {this.bases}
-      <input type="button" value="+" onClick={this.props.addBasis} />
+      {bases}
+      <input type="button" value="+" onClick={this.addBasis} />
     </div>`
 
 class Basis extends React.Component
