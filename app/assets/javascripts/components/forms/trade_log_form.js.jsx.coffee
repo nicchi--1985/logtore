@@ -27,7 +27,7 @@ class TradeLogForm extends React.Component
         benefit_amount: @refs.selectedForm.refs.benefit_amount.value
       },
       product: {
-        tradable_type: @props.selectedProduct,
+        tradable_type: @state.selectedProduct,
         target_params: @refs.selectedForm.getTargetParams()
       },
       bases: @refs.basisForm.getBasesToSubmit()

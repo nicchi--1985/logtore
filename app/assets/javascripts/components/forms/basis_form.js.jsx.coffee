@@ -13,9 +13,12 @@ class BasisForm extends React.Component
     return res
 
   clearBasesParams: =>
+    @refs.basis_1.refs.basis_text.value = ""
+    @refs.basis_1.refs.basis_type.value = 0
+    @setState bases: ["basis_1"]
 
   addBasis: (e) =>
-    bases = @props.bases
+    bases = @state.bases
     next_basis = "basis_" + (bases.length + 1)
     bases.push next_basis
     @setState bases: bases
@@ -28,6 +31,7 @@ class BasisForm extends React.Component
       <h4>this is BasisForm</h4>
       {bases}
       <input type="button" value="+" onClick={this.addBasis} />
+      <input type="button" onClick={this.clearBasesParams} value="clear" />
     </div>`
 
 class Basis extends React.Component
