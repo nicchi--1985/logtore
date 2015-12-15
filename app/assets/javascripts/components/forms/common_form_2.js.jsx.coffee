@@ -16,10 +16,10 @@ class CommonForm2 extends React.Component
     @refs.benefit_amount.value if @refs.benefit_amount
 
   getChangeRate: ->
-    @refs.change_rate.value if @refs.change_rate
+    (@refs.change_rate.value / 100) if @refs.change_rate
 
   getBenefitRate: ->
-    @refs.benefit_rate.value if @refs.benefit_rate
+    (@refs.benefit_rate.value / 100) if @refs.benefit_rate
 
   clearForm: ->
     @refs.invest_amount.value = "" if @refs.invest_amount

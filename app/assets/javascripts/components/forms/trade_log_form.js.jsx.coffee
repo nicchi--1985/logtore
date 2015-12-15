@@ -52,11 +52,10 @@ class TradeLogForm extends React.Component
     console.log @buildPostData()
     postdata = @buildPostData()
     # 必須項目がなければ何もしない
-    #return unless Validator.validate_trade_post(postdata)
-    @clearFormParams()
-    return
-    # あとで実装。フォームをクリアする→clearFormParams
+    return unless Validator.validate_trade_post(postdata)
+
     ActionCreator.createTrade(postdata)
+    @clearFormParams()
 
   createSelectedProductForm: =>
     switch @state.selectedProduct
