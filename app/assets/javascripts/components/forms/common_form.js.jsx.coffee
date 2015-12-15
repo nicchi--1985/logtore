@@ -2,19 +2,18 @@ class CommonForm extends React.Component
   constructor: (props) ->
     super props
 
-  getSubmitValues: ->
-    implimented_date = @refs.implimented_date.value
-    return implimented_date
-
   clearForm: ->
-    @refs.implimented_date.value = ""
+    @refs.implimentation_date.value = ""
     @refs.product.refs.selector.value = ""
     @refs.action.refs.selector.value = ""
 
   render: ->
     `<div>
       <h3>this is CommonForm</h3>
-      <input type="text" placeholder="取引日" ref="implimented_date"/>
+      <DatePicker selected={this.props.startDate}
+                   onChange={this.props.changeStartDate}
+                   dateFormat="YYYY/MM/DD"
+                   ref="implimentation_date" />
       <ProductTypeSelector productSelected={this.props.productSelected}
                            ref="product" />
       <ActionTypeSelector actionSelected={this.props.actionSelected}

@@ -31,7 +31,7 @@ class CommonForm2 extends React.Component
   renderFormForAction: ->
     switch @props.selectedAction
       # 新規 or 予想
-      when "0" or "2"
+      when "0","2"
         `<div>
         <input type="text" placeholder="単価(円)" ref="invest_amount" />
         <input type="text" placeholder="数量(株)" ref="invest_quantity" />

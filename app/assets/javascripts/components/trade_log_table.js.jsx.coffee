@@ -4,9 +4,11 @@ class TradeLogTable extends React.Component
   convertStrType: (intType) ->
     switch intType
       when 0
-        "buy"
+        "新規"
       when 1
-        "sell"
+        "損益確定"
+      when 2
+        "予想"
       else
         "-"
 

@@ -11,7 +11,7 @@ Validator = require('../../utils/Validator.coffee')
 class TradeLogForm extends React.Component
   constructor: (props) ->
     super(props)
-    @state = {selectedProduct: null, selectedAction: null}
+    @state = {selectedProduct: null, selectedAction: null, startDate: null}
 
   productSelected: (e) =>
     selectedProduct = e.target.value
@@ -22,11 +22,14 @@ class TradeLogForm extends React.Component
     selectedAction = e.target.value
     @setState selectedAction: selectedAction
 
+  changeStartDate: (date) =>
+    @setState startDate: date
+
   buildPostData: ->
     {
       trade: {
         user_id: "1",   # FIXME:ログイン機能追加後
-        implimentation_date: @refs.commonForm.refs.implimented_date.value,
+        implimentation_date: @state.startDate.format("YYYY/MM/DD"),
         action_type: @state.selectedAction
         invest_amount: @refs.commonForm2.getInvestAmount(),
         invest_quantity: @refs.commonForm2.getInvestQuantity(),
@@ -89,9 +92,12 @@ class TradeLogForm extends React.Component
       `<input type="button" value="記録" onClick={this.submitForm}/>`
 
   render: ->
+    console.log @state
     `<div>this is TradeLogForm
       <CommonForm productSelected={this.productSelected}
                   actionSelected={this.actionSelected}
+                  startDate={this.state.startDate}
+                  changeStartDate={this.changeStartDate}
                   ref="commonForm" />
       {this.createSelectedProductForm()}
       <CommonForm2 selectedAction={this.state.selectedAction} ref="commonForm2"/>
