@@ -9,8 +9,10 @@ class StockForm extends React.Component
 
   render: ->
     `<div>
-      <h4>this is StockForm</h4>
-      <input type="text" placeholder="銘柄コード" ref="brand_code" />
+      <label>株：</label>
+      <div className="textFieldWP">
+        <input type="text" placeholder="銘柄コード" ref="brand_code" />
+      </div>
     </div>`
 
 module.exports = StockForm

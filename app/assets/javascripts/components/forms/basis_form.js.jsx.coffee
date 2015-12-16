@@ -28,11 +28,11 @@ class BasisForm extends React.Component
       `<Basis key={id} ref={id} />`
 
     `<div>
-      <h4>this is BasisForm</h4>
+      <label>取引理由：</label>
       {bases}
-      <input type="button" value="+" onClick={this.addBasis} />
-      <input type="button" onClick={this.clearBasesParams} value="clear" />
+      <input className="addBasisBtn" type="button" value="+" onClick={this.addBasis} />
     </div>`
+    #<input type="button" onClick={this.clearBasesParams} value="clear" />
 
 class Basis extends React.Component
   constructor: (props) ->
@@ -40,12 +40,14 @@ class Basis extends React.Component
 
   render: ->
     `<div id={this.props.key}>
-      <select ref="basis_type">
+      <select className="basisSelector" ref="basis_type">
         <option value="0">テクニカル</option>
         <option value="1">ファンダメンタルズ</option>
         <option value="2">アノマリー</option>
       </select>
-      <input type="textarea" placeholder="理由" ref="basis_text"/>
+      <div className="textAreaWP">
+        <input className="basisText" type="textarea" placeholder="理由" ref="basis_text"/>
+      </div>
      </div>`
 
 module.exports = BasisForm

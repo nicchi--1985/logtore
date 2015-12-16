@@ -33,17 +33,33 @@ class CommonForm2 extends React.Component
       # 新規 or 予想
       when "0","2"
         `<div>
-        <input type="text" placeholder="単価(円)" ref="invest_amount" />
-        <input type="text" placeholder="数量(株)" ref="invest_quantity" />
+        <label>商品共通：</label>
+        <div className="textFieldWP">
+          <input type="text" placeholder="単価(円)" ref="invest_amount" />
+        </div>
+        <div className="textFieldWP">
+          <input type="text" placeholder="数量(株)" ref="invest_quantity" />
+        </div>
         </div>`
       # 損益確定
       when "1"
         `<div>
-          <input type="text" placeholder="単価(円)" ref="invest_amount" />
-          <input type="text" placeholder="数量(株)" ref="invest_quantity" />
-          <input type="text" placeholder="利益(円)" ref="benefit_amount" />
-          <input type="text" placeholder="騰落率(%)" ref="change_rate" />
-          <input type="text" placeholder="利益率(%)" ref="benefit_rate" />
+          <label>商品共通：</label>
+          <div className="textFieldWP">
+            <input type="text" placeholder="単価(円)" ref="invest_amount" />
+          </div>
+          <div className="textFieldWP">
+            <input type="text" placeholder="数量(株)" ref="invest_quantity" />
+          </div>
+          <div className="textFieldWP">
+            <input type="text" placeholder="利益(円)" ref="benefit_amount" />
+          </div>
+          <div className="textFieldWP">
+            <input type="text" placeholder="騰落率(%)" ref="change_rate" />
+          </div>
+          <div className="textFieldWP">
+            <input type="text" placeholder="利益率(%)" ref="benefit_rate" />
+          </div>
         </div>`
       else
         ``

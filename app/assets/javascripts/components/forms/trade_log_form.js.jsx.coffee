@@ -89,7 +89,7 @@ class TradeLogForm extends React.Component
 
   renderSubmitBtn: =>
     if @state.selectedProduct and @state.selectedAction
-      `<input type="button" value="記録" onClick={this.submitForm}/>`
+      `<input className="submitBtn" type="button" value="記録" onClick={this.submitForm}/>`
 
   render: ->
     console.log @state
