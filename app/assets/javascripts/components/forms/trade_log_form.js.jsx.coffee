@@ -63,7 +63,7 @@ class TradeLogForm extends React.Component
   createSelectedProductForm: =>
     switch @state.selectedProduct
       when null
-        `<div>select your product</div>`
+        ``
       when "stock"
         `<div>
           <StockForm ref="selectedForm" />
@@ -93,13 +93,15 @@ class TradeLogForm extends React.Component
 
   render: ->
     console.log @state
-    `<div>this is TradeLogForm
+    `<div className="inputFormWP">
       <CommonForm productSelected={this.productSelected}
                   actionSelected={this.actionSelected}
                   startDate={this.state.startDate}
                   changeStartDate={this.changeStartDate}
                   ref="commonForm" />
+      <div className="productFormWP">
       {this.createSelectedProductForm()}
+      </div>
       <CommonForm2 selectedAction={this.state.selectedAction} ref="commonForm2"/>
       {this.renderBasisForm()}
       {this.renderSubmitBtn()}

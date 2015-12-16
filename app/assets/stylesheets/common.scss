@@ -1,0 +1,35 @@
+$primary_color: #ff9681 !default;
+$secondry_color: #8f8d8e !default;
+
+* {
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+}
+
+body {
+  background-color: #efefef;
+  color: $secondry_color;
+}
+
+#logo {
+  color: $primary_color;
+  font-weight: bold;
+  font-size: 150%;
+  p {
+    display: inline-block;
+    border-top: 1px solid $primary_color;
+    border-bottom: 1px solid $primary_color;
+  }
+}
+
+label {
+  font-size: 80%;
+  font-weight: bold;
+}
+
+//for debug
+input{
+  //background-color: #12ba4a;
+}
+select{
+  //background-color: #1234ef;
+}

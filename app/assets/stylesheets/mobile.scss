@@ -1,0 +1,46 @@
+$primary_color: #ff9681 !default;
+$secondry_color: #8f8d8e !default;
+
+header {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0 5px 0;
+
+}
+
+.inputFormWP {
+  margin-top: 5px;
+  padding-top: 10px;
+}
+
+.datePickerWP {
+  padding: 5px 15px 5px 15px;
+  .datePicker {
+    width: 100%;
+    padding: 10px 0 10px 20px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+  }
+}
+
+.productSelectorWP {
+  margin-top: 5px;
+  padding: 5px 10px 5px 10px;
+  .productSelector {
+    width: 100%;
+    padding: 10px 0 10px 20px;
+    border: 1px solid gray;
+    color: gray
+  }
+}
+
+.actionSelectorWP {
+  margin-top: 5px;
+  padding: 5px 10px 5px 10px;
+  .actionSelector {
+    width: 100%;
+    padding: 10px 0 10px 20px;
+    border: 1px solid gray;
+    color: gray
+  }
+}

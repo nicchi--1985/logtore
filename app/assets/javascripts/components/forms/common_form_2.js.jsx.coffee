@@ -46,12 +46,11 @@ class CommonForm2 extends React.Component
           <input type="text" placeholder="利益率(%)" ref="benefit_rate" />
         </div>`
       else
-        `<div>select your action</div>`
+        ``
 
   render: ->
     console.log @props
-    `<div>
-      <h3>this is CommonForm2</h3>
+    `<div className="commonForm2WP">
       {this.renderFormForAction()}
     </div>`
 

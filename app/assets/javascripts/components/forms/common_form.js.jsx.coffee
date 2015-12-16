@@ -9,11 +9,15 @@ class CommonForm extends React.Component
 
   render: ->
     `<div>
-      <h3>this is CommonForm</h3>
+      <div className="datePickerWP">
+      <label>取引日：</label>
       <DatePicker selected={this.props.startDate}
                    onChange={this.props.changeStartDate}
                    dateFormat="YYYY/MM/DD"
-                   ref="implimentation_date" />
+                   placeholderText="select trade date"
+                   ref="implimentation_date"
+                   className="datePicker" />
+      </div>
       <ProductTypeSelector productSelected={this.props.productSelected}
                            ref="product" />
       <ActionTypeSelector actionSelected={this.props.actionSelected}
@@ -23,22 +27,32 @@ class CommonForm extends React.Component
 class ProductTypeSelector extends React.Component
 
   render: ->
-    `<select onChange={this.props.productSelected} ref="selector">
+    `<div className="productSelectorWP">
+    <label>商品種類：</label>
+    <select className="productSelector"
+             onChange={this.props.productSelected}
+             ref="selector">
       <option value="">商品種類を選択して下さい</option>
       <option value="stock">株式</option>
       <option value="future">先物</option>
       <option value="option">オプション</option>
       <option value="exchange">為替</option>
-     </select>`
+     </select>
+     </div>`
 
 class ActionTypeSelector extends React.Component
 
   render: ->
-    `<select form="TradeForm" onChange={this.props.actionSelected} ref="selector">
-       <option value="">投資行動を選択して下さい</option>
+    `<div className="actionSelectorWP">
+    <label>アクションタイプ：</label>
+    <select className="actionSelector"
+             onChange={this.props.actionSelected}
+             ref="selector">
+       <option value="">アクションタイプを選択して下さい</option>
        <option value="0">新規</option>
        <option value="1">損益確定</option>
        <option value="2">予想</option>
-      </select>`
+      </select>
+      </div>`
 
 module.exports = CommonForm

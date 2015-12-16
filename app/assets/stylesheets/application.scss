@@ -10,6 +10,20 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+@import "reset";
+// third party
+@import "sanitize";
+@import "react-datepicker.min.css";
+@import "common";
+
+// mobile
+@media screen and (max-width:768px) {
+  @import "mobile";
+}
+
+// mobile以外
+@media screen and (min-width:768px) {
+  @import "pc";
+}
