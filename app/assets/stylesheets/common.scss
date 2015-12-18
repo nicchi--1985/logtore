@@ -29,9 +29,12 @@ label {
 }
 
 //for debug
-input{
+input[type=text], input[type=textarea]{
   //background-color: #12ba4a;
+  color: $primary_color;
+  font-weight: bold;
 }
+
 select{
   //background-color: #1234ef;
 }

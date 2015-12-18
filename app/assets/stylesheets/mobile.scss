@@ -38,7 +38,7 @@ select {
   }
 }
 
-.productSelectorWP {
+@mixin radioBtn {
   margin-top: 5px;
   padding: 5px 0 5px 0;
   .buttonWP {
@@ -81,12 +81,12 @@ select {
   }
 }
 
-.actionSelectorWP {
-  margin-top: 5px;
-  padding: 5px 0 5px 0;
-  .actionSelector {
+.productSelectorWP {
+  @include radioBtn;
+}
 
-  }
+.actionSelectorWP {
+  @include radioBtn;
 }
 
 .textAreaWP {

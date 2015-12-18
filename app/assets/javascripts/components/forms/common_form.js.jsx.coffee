@@ -31,49 +31,81 @@ class ProductTypeSelector extends React.Component
     <label>商品種類：</label>
     <div className="productSelectorWP">
       <div className="buttonWP">
-        <input type="radio" id="common_stock" name="product" value="stock"/>
-        <label htmlFor="common_stock" className="productBtn">株式</label>
+        <input type="radio"
+               id="common_stock"
+               name="product"
+               value="stock"
+               onClick={this.props.productSelected} />
+        <label htmlFor="common_stock" className="productBtn">
+        株式
+        </label>
       </div>
       <div className="buttonWP">
-        <input type="radio" id="common_future" name="product" value="future"/>
+        <input type="radio"
+               id="common_future"
+               name="product"
+               value="future"
+               onClick={this.props.productSelected} />
         <label htmlFor="common_future" className="productBtn">先物</label>
       </div>
       <div className="buttonWP">
-        <input type="radio" id="common_option" name="product" value="option"/>
+        <input type="radio"
+               id="common_option"
+               name="product"
+               value="option"
+               onClick={this.props.productSelected} />
         <label htmlFor="common_option" className="productBtn">オプション</label>
       </div>
       <div className="buttonWP">
-        <input type="radio" id="common_exchange" name="product" value="exchange"/>
+        <input type="radio"
+               id="common_exchange"
+               name="product"
+               value="exchange"
+               onClick={this.props.productSelected}/>
         <label htmlFor="common_exchange" className="productBtn">為替</label>
       </div>
      </div>
     </div>`
-    ###
-    <select className="productSelector"
-             onChange={this.props.productSelected}
-             ref="selector">
-      <option value="">商品種類を選択して下さい</option>
-      <option value="stock">株式</option>
-      <option value="future">先物</option>
-      <option value="option">オプション</option>
-      <option value="exchange">為替</option>
-     </select>
-     </div>`
-    ###
 
 class ActionTypeSelector extends React.Component
 
   render: ->
-    `<div className="actionSelectorWP">
+    `<div>
     <label>アクションタイプ：</label>
-    <select className="actionSelector"
-             onChange={this.props.actionSelected}
-             ref="selector">
-       <option value="">アクションタイプを選択して下さい</option>
-       <option value="0">新規</option>
-       <option value="1">損益確定</option>
-       <option value="2">予想</option>
-      </select>
-      </div>`
+    <div className="actionSelectorWP">
+      <div className="buttonWP">
+        <input type="radio"
+               id="common_buy"
+               name="action"
+               value="buy"
+               onClick={this.props.actionSelected} />
+        <label htmlFor="common_buy" className="actionBtn">買い</label>
+      </div>
+      <div className="buttonWP">
+        <input type="radio"
+               id="common_sell"
+               name="action"
+               value="sell"
+               onClick={this.props.actionSelected} />
+        <label htmlFor="common_sell" className="actionBtn">売り</label>
+      </div>
+      <div className="buttonWP">
+        <input type="radio"
+               id="common_forecast_buy"
+               name="action"
+               value="forecast_buy"
+               onClick={this.props.actionSelected} />
+        <label htmlFor="common_forecast_buy" className="actionBtn">買い予想</label>
+      </div>
+      <div className="buttonWP">
+        <input type="radio"
+               id="common_forecast_sell"
+               name="action"
+               value="forecast_sell"
+               onClick={this.props.actionSelected} />
+        <label htmlFor="common_forecast_sell" className="actionBtn">売り予想</label>
+      </div>
+     </div>
+    </div>`
 
 module.exports = CommonForm
