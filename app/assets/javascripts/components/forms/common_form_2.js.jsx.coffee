@@ -31,7 +31,7 @@ class CommonForm2 extends React.Component
   renderFormForAction: ->
     switch @props.selectedAction
       # 新規 or 予想
-      when "buy","forecast_buy","forecast_sell"
+      when "forecast_buy","forecast_sell"
         `<div>
         <label>商品共通：</label>
         <div className="textFieldWP">
@@ -42,7 +42,7 @@ class CommonForm2 extends React.Component
         </div>
         </div>`
       # 損益確定
-      when "sell"
+      when "buy","sell"
         `<div>
           <label>商品共通：</label>
           <div className="textFieldWP">
