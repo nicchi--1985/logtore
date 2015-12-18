@@ -23,6 +23,12 @@ select {
 .inputFormWP {
   margin-top: 5px;
   padding: 10px 10px 0 10px;
+  input[type=number] {
+    width: 100%;
+    padding: 10px 0 10px 20px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+  }
   input[type=text] {
     width: 100%;
     padding: 10px 0 10px 20px;
