@@ -26,11 +26,13 @@ class TradeLogForm extends React.Component
     @setState startDate: date
 
   buildPostData: ->
+    action = @refs.commonForm.getActionType()
     {
       trade: {
         user_id: "1",   # FIXME:ログイン機能追加後
         implimentation_date: @state.startDate.format("YYYY/MM/DD"),
-        action_type: @state.selectedAction
+        action_type: action.action_type
+        forecast: action.forecast
         invest_amount: @refs.commonForm2.getInvestAmount(),
         invest_quantity: @refs.commonForm2.getInvestQuantity(),
         benefit_amount: @refs.commonForm2.getBenefitAmount(),
@@ -45,14 +47,12 @@ class TradeLogForm extends React.Component
     }
 
   clearFormParams: ->
-    @refs.commonForm.clearForm()
     @refs.commonForm2.clearForm()
     @refs.selectedForm.clearTargetParams()
     @refs.basisForm.clearBasesParams()
-    @setState {selectedProduct: null, selectedAction: null}
+    @setState {selectedProduct: null, selectedAction: null, startDate: null}
 
   submitForm: (e) =>
-    console.log @buildPostData()
     postdata = @buildPostData()
     # 必須項目がなければ何もしない
     return unless Validator.validate_trade_post(postdata)
@@ -95,7 +95,9 @@ class TradeLogForm extends React.Component
     console.log @state
     `<div className="inputFormWP">
       <CommonForm productSelected={this.productSelected}
+                  selectedProduct={this.state.selectedProduct}
                   actionSelected={this.actionSelected}
+                  selectedAction={this.state.selectedAction}
                   startDate={this.state.startDate}
                   changeStartDate={this.changeStartDate}
                   ref="commonForm" />

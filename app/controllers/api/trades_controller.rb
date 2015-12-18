@@ -29,6 +29,7 @@ module Api
       params.require(:trade).permit(:user_id,
                                     :implimentation_date,
                                     :action_type,
+                                    :forecast,
                                     :invest_amount,
                                     :invest_quantity,
                                     :benefit_amount,
