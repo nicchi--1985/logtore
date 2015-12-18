@@ -8,6 +8,7 @@ $secondry_color: #8f8d8e !default;
 body {
   background-color: #efefef;
   color: $secondry_color;
+  z-index: -99;
 }
 
 #logo {

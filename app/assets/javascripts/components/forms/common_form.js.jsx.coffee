@@ -27,8 +27,28 @@ class CommonForm extends React.Component
 class ProductTypeSelector extends React.Component
 
   render: ->
-    `<div className="productSelectorWP">
+    `<div>
     <label>商品種類：</label>
+    <div className="productSelectorWP">
+      <div className="buttonWP">
+        <input type="radio" id="common_stock" name="product" value="stock"/>
+        <label htmlFor="common_stock" className="productBtn">株式</label>
+      </div>
+      <div className="buttonWP">
+        <input type="radio" id="common_future" name="product" value="future"/>
+        <label htmlFor="common_future" className="productBtn">先物</label>
+      </div>
+      <div className="buttonWP">
+        <input type="radio" id="common_option" name="product" value="option"/>
+        <label htmlFor="common_option" className="productBtn">オプション</label>
+      </div>
+      <div className="buttonWP">
+        <input type="radio" id="common_exchange" name="product" value="exchange"/>
+        <label htmlFor="common_exchange" className="productBtn">為替</label>
+      </div>
+     </div>
+    </div>`
+    ###
     <select className="productSelector"
              onChange={this.props.productSelected}
              ref="selector">
@@ -39,6 +59,7 @@ class ProductTypeSelector extends React.Component
       <option value="exchange">為替</option>
      </select>
      </div>`
+    ###
 
 class ActionTypeSelector extends React.Component
 
