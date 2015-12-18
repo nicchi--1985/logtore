@@ -19,13 +19,13 @@ class FutureForm extends React.Component
     `<div>
       <label>先物：</label>
       <div className="textFieldWP">
-        <input type="text" placeholder="指数コード" ref="index_code" />
+        <input type="number" pattern="\d*" placeholder="指数コード" ref="index_code" />
       </div>
       <div className="textFieldWP">
-        <input type="text" placeholder="年" ref="year" />
+        <input type="number" pattern="\d*" placeholder="年" ref="year" />
       </div>
       <div className="textFieldWP">
-        <input type="text" placeholder="月" ref="month" />
+        <input type="number" pattern="\d*" placeholder="月" ref="month" />
       </div>
     </div>`
 

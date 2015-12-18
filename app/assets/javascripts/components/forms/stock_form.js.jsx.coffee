@@ -11,7 +11,7 @@ class StockForm extends React.Component
     `<div>
       <label>株：</label>
       <div className="textFieldWP">
-        <input type="text" placeholder="銘柄コード" ref="brand_code" />
+        <input type="number" pattern="\d*" placeholder="銘柄コード" ref="brand_code" />
       </div>
     </div>`
 

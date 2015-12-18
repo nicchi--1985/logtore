@@ -22,16 +22,16 @@ class OptionForm extends React.Component
     `<div>
       <label>オプション：</label>
       <div className="textFieldWP">
-        <input type="text" placeholder="指数コード" ref="index_code" />
+        <input type="number" pattern="\d*" placeholder="指数コード" ref="index_code" />
       </div>
       <div className="textFieldWP">
-        <input type="text" placeholder="行使価格" ref="exercise_price" />
+        <input type="number" pattern="\d*" placeholder="行使価格" ref="exercise_price" />
       </div>
       <div className="textFieldWP">
-        <input type="text" placeholder="年" ref="year" />
+        <input type="number" pattern="\d*" placeholder="年" ref="year" />
       </div>
       <div className="textFieldWP">
-        <input type="text" placeholder="月" ref="month" />
+        <input type="number" pattern="\d*" placeholder="月" ref="month" />
       </div>
     </div>`
 
