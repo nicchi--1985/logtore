@@ -34,7 +34,7 @@ class TradeLogTable extends React.Component
 
   render: ->
     `<div className='tradeList'>
-      <label>ログ一覧</label>
+      <label>最新ログ一覧</label>
       <table>
         <thead>
           <tr>
@@ -48,6 +48,7 @@ class TradeLogTable extends React.Component
           {this.renderTradeLogs()}
         </tbody>
       </table>
+     
     </div>`
 
 module.exports = TradeLogTable

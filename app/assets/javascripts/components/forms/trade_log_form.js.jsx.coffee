@@ -11,7 +11,7 @@ Validator = require('../../utils/Validator.coffee')
 class TradeLogForm extends React.Component
   constructor: (props) ->
     super(props)
-    @state = {selectedProduct: null, selectedAction: null, startDate: null}
+    @state = {selectedProduct: null, selectedAction: null, startDate: moment()}
 
   productSelected: (e) =>
     selectedProduct = e.target.value

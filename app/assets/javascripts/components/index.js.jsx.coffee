@@ -1,5 +1,5 @@
 TradeLogForm = require('./forms/trade_log_form')
-TradeLogTable = require('./trade_log_table')
+TradeLogTable = require('./logtables/trade_log_table')
 ActionCreator = require('../actions/ActionCreator.coffee')
 TradeStore = require('../stores/TradeStore.coffee')
 
