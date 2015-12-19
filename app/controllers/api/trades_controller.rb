@@ -1,7 +1,7 @@
 module Api
   class TradesController < ApplicationController
     def index
-      @trades = Trade.all()
+      @trades = Trade.limit(5)
       #@jtrades = @trades.to_json(:include => [:tradable, :bases])
       render json: @trades
     end
@@ -20,7 +20,7 @@ module Api
         end
       end
 
-      @trades = Trade.all()
+      @trades = Trade.limit(5)
       render json: @trades
     end
 
