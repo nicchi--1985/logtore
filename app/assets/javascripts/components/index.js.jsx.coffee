@@ -1,5 +1,6 @@
 TradeLogForm = require('./forms/trade_log_form')
 TradeLogTable = require('./logtables/trade_log_table')
+MonthlyLogTable = require('./logtables/monthly_log_table')
 ActionCreator = require('../actions/ActionCreator.coffee')
 TradeStore = require('../stores/TradeStore.coffee')
 
@@ -7,6 +8,7 @@ class TradeLogContainer extends React.Component
   constructor: (props) ->
     super
     ActionCreator.fetchTrades()
+    console.log MonthlyLogTable
     @state = {data: TradeStore.getTrades()}
 
   _onChange: =>
@@ -27,6 +29,7 @@ class TradeLogContainer extends React.Component
     `<div>
       <TradeLogForm createTrade={this.createTrade} />
       <TradeLogTable trades={this.state.data} />
+      <MonthlyLogTable trades={this.state.data} />
     </div>`
 
 $ ->
