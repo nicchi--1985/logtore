@@ -1,21 +1,24 @@
 TradeLog = require('./trade_log')
 
 class TradeLogTable extends React.Component
-  convertStrType: (intType) ->
-    switch intType
-      when 0
-        "新規"
-      when 1
-        "損益確定"
-      when 2
-        "予想"
-      else
-        "-"
+  convertStrType: (trade) ->
+    console.log trade
+    type = trade.action_type
+    forecast = trade.forecast
+    if type is 0 and forecast is false
+      "買"
+    else if type is 1 and forecast is false
+      "売"
+    else if type is 0 and forecast is true
+      "買(予)"
+    else if type is 1 and forecast is true
+      "売(予)"
+    else
+      "?"
 
-  render: ->
-    console.log "rendering table!!"
+  renderTradeLogs: ->
     tradeLogs = @props.trades.map (trade) =>
-      strType = @convertStrType(trade.action_type)
+      strType = @convertStrType(trade)
       if trade.implimentation_date != null
         imp_date = trade.implimentation_date.substr(0,10)
       `<TradeLog key={trade.id}
@@ -29,22 +32,22 @@ class TradeLogTable extends React.Component
                  bases={trade.bases}>
       </TradeLog>`
 
-    `<table className='TradeList'>
-      <thead>
-        <tr>
-          <th>取引ID</th>
-          <th>取引日</th>
-          <th>取引タイプ</th>
-          <th>商品種類</th>
-          <th>商品内容</th>
-          <th>単価</th>
-          <th>数量</th>
-          <th>理由</th>
-        </tr>
-      </thead>
-      <tbody>
-        {tradeLogs}
-      </tbody>
-    </table>`
+  render: ->
+    `<div className='tradeList'>
+      <label>ログ一覧</label>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.renderTradeLogs()}
+        </tbody>
+      </table>
+    </div>`
 
 module.exports = TradeLogTable

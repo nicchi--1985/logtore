@@ -1,46 +1,53 @@
 class TradeLog extends React.Component
-  createProductLog: ->
+  renderProductLog: ->
+    product = @props.product
     switch @props.product_type
       when "Stock"
-        @props.product.brand_code
+        `<div>{product.brand_code}</div>`
       when "Future"
-        @props.product.index_code + "\n" \
-        + @props.product.year + "\n" \
-        + @props.product.month
+        `<div>
+        <div>{product.index_code}</div>
+        {product.year + "(年)/" + product.month + "(月)"}
+        </div>`
       when "Option"
-        @props.product.index_code
+        `<div>
+        <div>{product.index_code}</div>
+        <div>{product.exercise_price + " 円"}</div>
+        {product.year + "(年)/" + product.month + "(月)"}
+        </div>`
       when "Exchange"
-        @props.product.base_currency
+        `<div>{product.base_currency + "/" + product.quote_currency}</div>`
 
   basisTypeToStr: (basis_type) ->
     switch basis_type
       when 0
-        "テクニカル"
+        "テ："
       when 1
-        "ファンダメンタル"
+        "ファ："
       when 2
-        "アノマリー"
+        "ア："
       else
         "?"
 
-  createBasisLog: =>
-    basis = @props.bases.map (basis) =>
-      @basisTypeToStr(basis.basis_type) + ": " + basis.text
-    basis.join("\n")
+  renderBasisLog: =>
+    bases = @props.bases.map (basis) =>
+      basistext = @basisTypeToStr(basis.basis_type) + basis.text
+      `<div key={basis.id}>{basistext}</div>`
+
+  renderAmountLog: =>
+    amount = @props.invest_amount
+    quantity = @props.invest_quantity
+    `<div>
+    <div>{amount + "(円)"}</div>
+    <div>{"x " + quantity + " (枚)"}</div>
+    </div>`
 
   render: ->
-    product = @createProductLog()
-    basis = @createBasisLog()
-
     `<tr>
-      <td>{this.props.trade_id}</td>
-      <td>{this.props.implimentation_date}</td>
       <td>{this.props.action_type}</td>
-      <td>{this.props.product_type}</td>
-      <td>{product}</td>
-      <td>{this.props.invest_amount}</td>
-      <td>{this.props.invest_quantity}</td>
-      <td>{basis}</td>
+      <td>{this.props.product_type.substr(0,2)}</td>
+      <td>{this.renderProductLog()}</td>
+      <td>{this.renderAmountLog()}</td>
      </tr>`
 
 module.exports = TradeLog

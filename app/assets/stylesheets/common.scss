@@ -1,12 +1,13 @@
 $primary_color: #ff9681 !default;
 $secondry_color: #8f8d8e !default;
+$background_color: #efefef !default;
 
 * {
   font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
 }
 
 body {
-  background-color: #efefef;
+  background-color: $background_color;
   color: $secondry_color;
   z-index: -99;
 }

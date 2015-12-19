@@ -1,5 +1,6 @@
 $primary_color: #ff9681 !default;
 $secondry_color: #8f8d8e !default;
+$background_color: #efefef !default;
 
 header {
   width: 100%;
@@ -54,7 +55,7 @@ select {
     vertical-align: middle;
     width: 25%;
     height: 70px;
-    border: 2px solid #efefef;
+    border: 2px solid $background_color;
   }
   input[type=radio] {
     display: none;
@@ -129,4 +130,39 @@ select {
   background-color: $primary_color;
   border: 1px solid $primary_color;
   border-radius: 5px;
+}
+
+.tradeList {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 0 10px 0 10px;
+  table {
+    width: 100%;
+
+  }
+  tbody tr {
+    border-top: 1px solid $secondry_color;
+    border-bottom: 1px solid $secondry_color;
+  }
+  td:nth-child(1) {
+    width: 15%;
+    color: $secondry_color;
+    text-align: center;
+    padding: 5px 0 5px 0;
+  }
+  td:nth-child(2) {
+    width: 11%;
+    color: $secondry_color;
+    text-align: center;
+  }
+  td:nth-child(3) {
+    width: 40%;
+    color: $secondry_color;
+    padding-left: 5px;
+  }
+  td:nth-child(4) {
+    width: 34%;
+    color: $secondry_color;
+    padding-left: 5px;
+  }
 }
