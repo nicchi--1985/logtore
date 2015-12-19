@@ -3,12 +3,9 @@ TradeLogTable = require('./logtables/trade_log_table')
 ActionCreator = require('../actions/ActionCreator.coffee')
 TradeStore = require('../stores/TradeStore.coffee')
 
-console.log TradeStore
-
 class TradeLogContainer extends React.Component
   constructor: (props) ->
     super
-    console.log ActionCreator
     ActionCreator.fetchTrades()
     @state = {data: TradeStore.getTrades()}
 

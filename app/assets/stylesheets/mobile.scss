@@ -138,29 +138,28 @@ select {
   padding: 0 10px 0 10px;
   table {
     width: 100%;
-
   }
   tbody tr {
     border-top: 1px solid $secondry_color;
     border-bottom: 1px solid $secondry_color;
   }
-  td:nth-child(1) {
+  .tradeLogNode td:nth-child(1) {
     width: 15%;
     color: $secondry_color;
     text-align: center;
     padding: 5px 0 5px 0;
   }
-  td:nth-child(2) {
+  .tradeLogNode td:nth-child(2) {
     width: 11%;
     color: $secondry_color;
     text-align: center;
   }
-  td:nth-child(3) {
+  .tradeLogNode td:nth-child(3) {
     width: 40%;
     color: $secondry_color;
     padding-left: 5px;
   }
-  td:nth-child(4) {
+  .tradeLogNode td:nth-child(4) {
     width: 34%;
     color: $secondry_color;
     padding-left: 5px;

@@ -43,7 +43,7 @@ class TradeLog extends React.Component
     </div>`
 
   render: ->
-    `<tr>
+    `<tr className="tradeLogNode">
       <td>{this.props.action_type}</td>
       <td>{this.props.product_type.substr(0,2)}</td>
       <td>{this.renderProductLog()}</td>
