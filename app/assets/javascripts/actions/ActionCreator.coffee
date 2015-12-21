@@ -26,31 +26,39 @@ module.exports = {
         @recieveTrades(data)
       .catch (xhr, status, err) ->
         console.error xhr, status, err
-    ###
+
+  fetchSummaries: (month=1) ->
+    Api.fetchSummaries(month)
+      .then (data) =>
+        console.log "++++++++++++++++++"
+        console.log data
+        @recieveSummaries(data)
+      .catch (xhr, status, err) ->
+        console.error xhr, status, err
+
+  recieveSummaries: (json) ->
     AppDispatcher.dispatch({
         source: 'SERVER_ACTION',
         action: {
-          type: 'CREATE_TRADES',
-          data: postdata
+          type: 'RECEIVE_SUMMARY',
+          summaries: json
         }
       })
-    ###
+
+  fetchProductSummaries: (month=1) ->
+    Api.fetchProductSummaries(month)
+      .then (data) =>
+        @recieveProductSummaries(data)
+      .catch (xhr, status, err) ->
+        console.error xhr, status, err
+
+  recieveProductSummaries: (json) ->
+    AppDispatcher.dispatch({
+        source: 'SERVER_ACTION',
+        action: {
+          type: 'RECEIVE_PSUMMARY',
+          psummaries: json
+        }
+      })
+
 }
-
-
-###
-    console.log data
-    console.log window.location.protocol
-    console.log window.location.host
-    console.log window.location.origin
-
-    $.ajax
-        url: window.location.origin + "/api/trades"
-        dataType: 'json'
-        type: 'POST'
-        data: data
-      .done (data) =>
-        @setState(data: data)
-      .fail (xhr, status, err) =>
-        console.error @props.url, status, err.toString()
-###

@@ -24,6 +24,19 @@ module Api
       render json: @trades
     end
 
+    def summary
+      #@trades = Trade.all()
+      #@summaries = TradeSummarizer.summarize(@trades)
+
+      #res = MonthlySummarizer.build_response(@trades)
+
+      render json: {title: "sampleRes", msg: "this is a sample res for summaries"}
+    end
+
+    def product_summary
+      render json: {title: "sampleRes", msg: "this is a sample res for product_summaries"}
+    end
+
     private
     def create_params
       params.require(:trade).permit(:user_id,

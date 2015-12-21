@@ -27,6 +27,34 @@ module.exports = {
           resolve(data)
         .fail (xhr, status, err) =>
           reject(xhr, status, err)
+
+
+  fetchSummaries: (month) ->
+    console.log "API.createTrade"
+    new Promise (resolve, reject) ->
+      $.ajax
+        url: window.location.origin + "/api/trades/summary"
+        dataType: 'json'
+        type: 'GET'
+        data: {"month": month}
+      .done (data) =>
+        resolve(data)
+      .fail (xhr, status, err) =>
+        reject(xhr, status, err)
+
+
+  fetchProductSummaries: (month) ->
+    console.log "API.createTrade"
+    new Promise (resolve, reject) ->
+      $.ajax
+        url: window.location.origin + "/api/trades/product_summary"
+        dataType: 'json'
+        type: 'GET'
+        data: {"month": month}
+      .done (data) =>
+        resolve(data)
+      .fail (xhr, status, err) =>
+        reject(xhr, status, err)
 }
 ###
 AppDispatcher.register((payload) =>

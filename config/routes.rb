@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   root to: 'dashboard#index'
 
   namespace :api, { format: 'json' } do
-    resources :trades, only: %i(index create)
+    resources :trades, only: %i(index create) do
+      collection do
+        get 'summary'
+        get 'product_summary'
+      end
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
