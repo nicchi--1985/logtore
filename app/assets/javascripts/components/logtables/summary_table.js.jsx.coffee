@@ -1,7 +1,5 @@
 class SummaryTable extends React.Component
   renderSummaries: ->
-    console.log "aaaaaaaaaaaaaaaaaa"
-    console.log @props
     @props.summaries.map (summary) ->
       `<SummaryNode key={summary.period} summary={summary}/>`
 

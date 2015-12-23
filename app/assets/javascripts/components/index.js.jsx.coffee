@@ -12,7 +12,7 @@ class TradeLogContainer extends React.Component
     super
     ActionCreator.fetchTrades()
     ActionCreator.fetchSummaries(month_period: 1)
-    ActionCreator.fetchProductSummaries(month_period: 1)
+    ActionCreator.fetchProductSummaries(month_period: 1, target_period: moment().format("YYYY-MM-DD"))
     @state = {
       trades: TradeStore.getTrades(),
       summaries: TradesSummaryStore.getSummaries(),
