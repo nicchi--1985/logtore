@@ -11,8 +11,8 @@ class TradeLogContainer extends React.Component
   constructor: (props) ->
     super
     ActionCreator.fetchTrades()
-    ActionCreator.fetchSummaries(month: 1)
-    ActionCreator.fetchProductSummaries(month: 1)
+    ActionCreator.fetchSummaries(month_period: 1)
+    ActionCreator.fetchProductSummaries(month_period: 1)
     @state = {
       trades: TradeStore.getTrades(),
       summaries: TradesSummaryStore.getSummaries(),

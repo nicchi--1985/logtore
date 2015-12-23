@@ -36,7 +36,7 @@ module.exports = {
         url: window.location.origin + "/api/trades/summary"
         dataType: 'json'
         type: 'GET'
-        data: {"month": month}
+        data: month
       .done (data) =>
         resolve(data)
       .fail (xhr, status, err) =>
@@ -50,7 +50,7 @@ module.exports = {
         url: window.location.origin + "/api/trades/product_summary"
         dataType: 'json'
         type: 'GET'
-        data: {"month": month}
+        data: month
       .done (data) =>
         resolve(data)
       .fail (xhr, status, err) =>
