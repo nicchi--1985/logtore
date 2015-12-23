@@ -29,9 +29,10 @@ module Api
     def summary
       month_period = params["month_period"].to_i || 1
       # FIXME: 要件確定後、要修正
-      num_of_periods = SUMMARY_DISP_TERM / month_period.to_i
+      # num_of_periods = SUMMARY_DISP_TERM / month_period.to_i
+      num_of_periods = 5
       q_date = Date.today
-      q_start = q_date.months_ago(SUMMARY_DISP_TERM).beginning_of_month
+      q_start = q_date.months_ago(month_period*num_of_periods).beginning_of_month
       q_end = q_date.end_of_month
       @trades = Trade.where(:implimentation_date => q_start...q_end)
       @summaries = TradeSummarizer.create_summaries(
