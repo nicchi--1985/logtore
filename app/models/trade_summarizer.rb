@@ -4,7 +4,7 @@ class TradeSummarizer
   # start_date: 集計の起点を指定
   def self.create_summaries(trades:, month_period:, num_of_periods:5, start_date:Date.today)
     periods = create_period_list(month_period, num_of_periods, start_date)
-    trade_lists = devide_in_periods(trades, periods)
+    trade_lists = devide_in_periods(trades, periods, month_period)
     summaries = []
     trade_lists.each_with_index do |trade_list, i|
       summary = summarize(periods[i], trade_list)
@@ -14,14 +14,18 @@ class TradeSummarizer
   end
 
   private
-  def self.devide_in_periods(trades, periods)
+  def self.devide_in_periods(trades, periods, month_period)
     trade_lists = []
     # todo: impliment!
     # 対象のpriodにtradeが一つもない場合は空arrayをつっこむ
     # ActiveSupport: at_beginning_of_month, end_of_month, months_ago(x)
     # trade_lists: [[trade1,trade2,trade3],[trade4,trade5],[trade6]]
     periods.each do |p|
-      list = trades.find_all {|t| t.implimentation_date.between?(p.at_beginning_of_month, p.end_of_month)}
+      list = trades.find_all do |t|
+        q_start = p.months_ago(month_period - 1).at_beginning_of_month
+        q_end = p.end_of_month
+        t.implimentation_date.between?(q_start, q_end)
+      end
       trade_lists.push(list)
     end
     return trade_lists
@@ -30,7 +34,7 @@ class TradeSummarizer
   def self.create_period_list(month_period, num_of_periods, start_date)
     list = []
     num_of_periods.times do |i|
-      period = start_date.months_ago(i)
+      period = start_date.months_ago(i*month_period)
       list.push(period)
     end
     return list
