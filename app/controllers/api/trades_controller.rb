@@ -25,12 +25,15 @@ module Api
     end
 
     def summary
-      #@trades = Trade.all()
-      #@summaries = TradeSummarizer.summarize(@trades)
+      q_date = Date.today
+      q_start = q_date.months_ago(4).beginning_of_month
+      q_end = q_date.end_of_month
+      @trades = Trade.where(:implimentation_date => q_start...q_end)
+      @summaries = TradeSummarizer.create_summaries(trades: @trades,month_period: 1,num_of_periods: 5,start_date: q_date)
 
       #res = MonthlySummarizer.build_response(@trades)
 
-      render json: {title: "sampleRes", msg: "this is a sample res for summaries"}
+      render json: @summaries
     end
 
     def product_summary
