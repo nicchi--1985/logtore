@@ -1,4 +1,6 @@
 class TradeSummarizer
+  PRODUCTS = ["Stock", "Future", "Option", "Exchange"]
+
   # month_period: サマリの単位。月数を指定
   # num_of_periods: サマリ集計数を指定
   # start_date: 集計の起点を指定
@@ -8,6 +10,16 @@ class TradeSummarizer
     summaries = []
     trade_lists.each_with_index do |trade_list, i|
       summary = summarize(periods[i], trade_list)
+      summaries.push(summary)
+    end
+    return summaries
+  end
+
+  def self.create_product_summaries(trades:, month_period:, start_date:Date.today)
+    trade_lists = devide_in_products(trades)
+    summaries = []
+    trade_lists.each_with_index do |trade_list, i|
+      summary = summarize(start_date, trade_list, PRODUCTS[i])
       summaries.push(summary)
     end
     return summaries
@@ -31,6 +43,15 @@ class TradeSummarizer
     return trade_lists
   end
 
+  def self.devide_in_products(trades)
+    trade_lists = []
+    PRODUCTS.each do |p|
+      list = trades.find_all {|t| t.tradable_type == p}
+      trade_lists.push(list)
+    end
+    return trade_lists
+  end
+
   def self.create_period_list(month_period, num_of_periods, start_date)
     list = []
     num_of_periods.times do |i|
@@ -40,7 +61,7 @@ class TradeSummarizer
     return list
   end
 
-  def self.summarize(period, trade_list)
+  def self.summarize(period, trade_list, product_type=nil)
     plus_benefit = 0.0
     minus_benefit = 0.0
     trade_list.each do |trade|
@@ -51,7 +72,7 @@ class TradeSummarizer
         minus_benefit += rate
       end
     end
-    summary = TradeSummary.new(period, plus_benefit, minus_benefit)
+    summary = TradeSummary.new(period, plus_benefit, minus_benefit, product_type)
     return summary
   end
 end

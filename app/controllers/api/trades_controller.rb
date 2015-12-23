@@ -26,6 +26,7 @@ module Api
       render json: @trades
     end
 
+    # 複数periodのサマリ
     def summary
       month_period = params["month_period"].to_i || 1
       # FIXME: 要件確定後、要修正
@@ -41,14 +42,22 @@ module Api
                                             num_of_periods: num_of_periods,
                                             start_date: q_date
                                             )
-
-      #res = MonthlySummarizer.build_response(@trades)
-
       render json: @summaries
     end
 
+    # 単periodかつ商品別サマリ
     def product_summary
-      render json: {title: "sampleRes", msg: "this is a sample res for product_summaries"}
+      month_period = params["month_period"].to_i || 1
+      q_date = Date.parse(params["target_period"]) || Date.today
+      q_start = q_date.months_ago(month_period-1).beginning_of_month
+      q_end = q_date.end_of_month
+      @trades = Trade.where(:implimentation_date => q_start...q_end)
+      @summaries = TradeSummarizer.create_product_summaries(
+                                            trades: @trades,
+                                            month_period: month_period,
+                                            start_date: q_date
+                                            )
+      render json: @summaries
     end
 
     private
