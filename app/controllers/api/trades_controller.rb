@@ -3,7 +3,7 @@ module Api
     SUMMARY_DISP_TERM = 12
 
     def index
-      @trades = Trade.limit(5)
+      @trades = Trade.order('created_at DESC').limit(5)
       #@jtrades = @trades.to_json(:include => [:tradable, :bases])
       render json: @trades
     end
@@ -22,7 +22,7 @@ module Api
         end
       end
 
-      @trades = Trade.limit(5)
+      @trades = Trade.order('created_at DESC').limit(5)
       render json: @trades
     end
 
