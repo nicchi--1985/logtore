@@ -20,7 +20,7 @@ class TradesSummaryStore extends EventEmitter
     @prototype.on(CHANGE_SUMMARY, callback)
 
   @removeListener: (callback) =>
-    @removeListener(CHANGE_SUMMARY, callback)
+    @prototype.removeListener(CHANGE_SUMMARY, callback)
 
   @getSummaries: ->
     console.log "getting summaries! "

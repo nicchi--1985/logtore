@@ -20,7 +20,7 @@ class TradeStore extends EventEmitter
     @prototype.on(CHANGE_TRADE, callback)
 
   @removeListener: (callback) =>
-    @removeListener(CHANGE_TRADE, callback)
+    @prototype.removeListener(CHANGE_TRADE, callback)
 
   @getTrades: ->
     console.log "getting trades! "

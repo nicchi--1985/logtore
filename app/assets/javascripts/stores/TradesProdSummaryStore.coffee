@@ -20,7 +20,7 @@ class TradesProdSummaryStore extends EventEmitter
     @prototype.on(CHANGE_PSUMMARY, callback)
 
   @removeListener: (callback) =>
-    @removeListener(CHANGE_PSUMMARY, callback)
+    @prototype.removeListener(CHANGE_PSUMMARY, callback)
 
   @getPSummaries: ->
     console.log "getting psummaries! "

@@ -55,8 +55,4 @@ class TradeLogContainer extends React.Component
       <ProductSummaryTable psummaries={this.state.psummaries} />
     </div>`
 
-$ ->
-  ReactDOM.render(
-    `<TradeLogContainer />`,
-    document.getElementById('content')
-  )
+module.exports = TradeLogContainer
