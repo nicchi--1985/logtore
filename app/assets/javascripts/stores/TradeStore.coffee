@@ -1,5 +1,6 @@
 EventEmitter = require('events').EventEmitter
 AppDispatcher = require('../AppDispatcher')
+_ = require('underscore')
 
 CHANGE_TRADE = "change_trade"
 
@@ -25,6 +26,9 @@ class TradeStore extends EventEmitter
   @getTrades: ->
     console.log "getting trades! "
     return _trades
+
+  @getTradeById: (id) ->
+    _.find(_trades, (trade)-> trade.id == parseInt(id, 10))
 
 AppDispatcher.register((payload) ->
     switch payload.action.type

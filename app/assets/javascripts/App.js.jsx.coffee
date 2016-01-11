@@ -17,7 +17,7 @@ class TradeLogApp extends React.Component
       <li><Link to='/recent'>Recent</Link></li>
       <li><Link to='/summary'>Summary</Link></li>
       <li><Link to='/psummary'>Product Summary</Link></li>
-      <li><Link to='/detail'>Detail</Link></li>
+      <li><Link to='trades' params={{tradeId: "99"}}>Detail</Link></li>
       </ul>
       <RouteHandler />
      </div>`
@@ -28,7 +28,7 @@ routes = (
       <Route handler={RecentLog} name='recent' path='recent'/>
       <Route handler={SummaryLog} name='summary' path='summary'/>
       <Route handler={ProductSummaryLog} name='psummary' path='psummary'/>
-      <Route handler={TradeLogDetail} name='detail' path='detail'/>
+      <Route handler={TradeLogDetail} name='trades' path='/trades/:tradeId'/>
     </Route>`
   )
 
