@@ -2,20 +2,20 @@ class TradeLog extends React.Component
   renderProductLog: ->
     product = @props.product
     switch @props.product_type
-      when "Stock"
+      when "株"
         `<div>{product.brand_code}</div>`
-      when "Future"
+      when "先物"
         `<div>
         <div>{product.index_code}</div>
         {product.year + "(年)/" + product.month + "(月)"}
         </div>`
-      when "Option"
+      when "オプション"
         `<div>
         <div>{product.index_code}</div>
         <div>{product.exercise_price + " 円"}</div>
         {product.year + "(年)/" + product.month + "(月)"}
         </div>`
-      when "Exchange"
+      when "為替"
         `<div>{product.base_currency + "/" + product.quote_currency}</div>`
 
   basisTypeToStr: (basis_type) ->

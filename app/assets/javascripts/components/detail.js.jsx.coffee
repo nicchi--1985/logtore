@@ -4,6 +4,8 @@ class TradeLogDetail extends React.Component
   constructor: (props) ->
     super
     @trade = TradeStore.getTradeById(@props.params.tradeId)
+    console.log "********************"
+    console.log @trade
 
   renderProductInfo: ->
     `<table></table>`

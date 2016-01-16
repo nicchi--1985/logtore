@@ -25,8 +25,8 @@ class TradeLogTable extends React.Component
 
       `<TradeLog key={trade.id}
                  trade_id={trade.id}
-                 implimentation_date={imp_date}
-                 action_type={strType}
+                 implimentation_date={trade.implimentation_date}
+                 action_type={trade.action_type}
                  product_type={trade.tradable_type}
                  product={trade.tradable}
                  invest_amount={trade.invest_amount}
