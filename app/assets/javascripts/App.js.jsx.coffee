@@ -17,7 +17,7 @@ class TradeLogApp extends React.Component
       <li><Link to='/recent'>Recent</Link></li>
       <li><Link to='/summary'>Summary</Link></li>
       <li><Link to='/psummary'>Product Summary</Link></li>
-      <li><Link to='trades' params={{tradeId: "4"}}>Detail</Link></li>
+      <li><Link to='trades' params={{tradeId: "2"}}>Detail</Link></li>
       </ul>
       <RouteHandler />
      </div>`

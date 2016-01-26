@@ -1,4 +1,4 @@
-$primary_color: #ff9681 !default;
+$primary_color: #92c717 !default;
 $secondry_color: #8f8d8e !default;
 $background_color: #efefef !default;
 
@@ -196,5 +196,65 @@ select {
     width: 20%;
     color: $secondry_color;
     text-align: center;
+  }
+}
+
+// log detail
+#detail_content {
+  margin: 0 10px;
+  .impl_date {
+    text-align: center;
+    padding: 10px 0px;
+    margin: 10px 0px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  .action_type {
+    display: inline-block;
+    padding: 10px;
+    margin-left: 3px;
+    color: #fff;
+    background-color: $primary_color;
+  }
+
+  .product_type {
+    display: inline-block;
+    padding: 10px;
+    margin-left: 3px;
+    color: #fff;
+    background-color: $primary_color;
+  }
+
+  table {
+    width: 100%;
+    margin: 10px 0px;
+  }
+  table tbody tr th {
+    width: 25%;
+    text-align: center;
+  }
+  table tbody tr td {
+    width: 75%;
+    text-align: left;
+  }
+
+  .bases_wrapper {
+    margin-top: 10px;
+    border-top: 5px solid $secondry_color;
+    table {
+      width: 100%;
+      margin: 10px 0px;
+    }
+    table tbody tr th {
+      width: 25%;
+      color: $primary_color;
+      border-bottom: 3px solid $background_color;
+      text-align: center;
+    }
+    table tbody tr td {
+      width: 75%;
+      text-align: left;
+    }
   }
 }
