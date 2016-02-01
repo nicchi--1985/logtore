@@ -1,3 +1,5 @@
+Link = ReactRouter.Link
+
 class TradeLog extends React.Component
   renderProductLog: ->
     product = @props.product
@@ -44,10 +46,15 @@ class TradeLog extends React.Component
 
   render: ->
     `<tr className="tradeLogNode">
-      <td>{this.props.action_type}</td>
-      <td>{this.props.product_type.substr(0,2)}</td>
-      <td>{this.renderProductLog()}</td>
-      <td>{this.renderAmountLog()}</td>
-     </tr>`
+        <td>{this.props.action_type}</td>
+        <td>{this.props.product_type.substr(0,2)}</td>
+        <td>{this.renderProductLog()}</td>
+        <td>{this.renderAmountLog()}</td>
+        <td>
+        <Link to='trades' params={{tradeId: this.props.trade_id}}>
+        ＞
+        </Link>
+        </td>
+       </tr>`
 
 module.exports = TradeLog

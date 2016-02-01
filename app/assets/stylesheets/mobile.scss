@@ -148,7 +148,7 @@ select {
 .tradeList {
   @include logList;
   .tradeLogNode td:nth-child(1) {
-    width: 15%;
+    width: 11%;
     color: $secondry_color;
     text-align: center;
     padding: 15px 0 15px 0;
@@ -159,14 +159,29 @@ select {
     text-align: center;
   }
   .tradeLogNode td:nth-child(3) {
-    width: 40%;
+    width: 39%;
     color: $secondry_color;
     padding-left: 5px;
   }
   .tradeLogNode td:nth-child(4) {
-    width: 34%;
+    width: 30%;
     color: $secondry_color;
     padding-left: 5px;
+  }
+  .tradeLogNode td:nth-child(5) {
+    width: 9%;
+    color: $primary_color;
+    a:link {
+      color: $primary_color;
+    }
+    a:visited {
+      color: $primary_color;
+    }
+    a {
+      display: block;
+      text-align: center;
+      padding: 20px 0 20px 0;
+    }
   }
 }
 
