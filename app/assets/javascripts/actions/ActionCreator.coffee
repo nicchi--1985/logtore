@@ -4,7 +4,6 @@ Api = require('../utils/api.coffee')
 module.exports = {
   # method for server
   fetchTrades: () ->
-    console.log "ActionCreator.fetchTrades()"
     Api.fetchTrades()
       .then (data) =>
         @recieveTrades(data)
@@ -30,8 +29,6 @@ module.exports = {
   fetchSummaries: (month=1) ->
     Api.fetchSummaries(month)
       .then (data) =>
-        console.log "++++++++++++++++++"
-        console.log data
         @recieveSummaries(data)
       .catch (xhr, status, err) ->
         console.error xhr, status, err

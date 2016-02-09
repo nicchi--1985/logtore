@@ -18,7 +18,6 @@ class TradeLogForm extends React.Component
     @setState selectedProduct: selectedProduct
 
   actionSelected: (e) =>
-    console.log @state
     selectedAction = e.target.value
     @setState selectedAction: selectedAction
 
@@ -92,7 +91,6 @@ class TradeLogForm extends React.Component
       `<input className="submitBtn" type="button" value="記録" onClick={this.submitForm}/>`
 
   render: ->
-    console.log @state
     `<div className="inputFormWP">
       <CommonForm productSelected={this.productSelected}
                   selectedProduct={this.state.selectedProduct}

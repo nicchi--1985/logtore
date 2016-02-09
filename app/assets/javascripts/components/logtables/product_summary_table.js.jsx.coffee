@@ -12,10 +12,10 @@ class ProductSummaryTable extends React.Component
     `<div className="tradeSummaryList">
       <label>当月商品別サマリー</label>
       <table>
+      <tbody>
         <tr>
           <th colSpan="5">{target}</th>
         </tr>
-      <tbody>
       {this.renderSummaries()}
       </tbody>
       </table>

@@ -4,15 +4,12 @@ class TradeLogDetail extends React.Component
   constructor: (props) ->
     super
     @trade = TradeStore.getTradeById(@props.params.tradeId)
-    console.log "********************"
-    console.log @trade
 
   renderProductInfo: ->
     `<table></table>`
 
   renderBases: ->
     bases = @trade.bases.map (basis) =>
-      console.log basis
       `<tr key={basis.id}>
       <th>{basis.basis_type.substr(0,2)}</th>
       <td>{basis.text}</td>

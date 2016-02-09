@@ -20,17 +20,14 @@ class TradeLogContainer extends React.Component
     }
 
   _onChange: =>
-    console.log "CHANGE_TRADE!!"
     trades = TradeStore.getTrades()
     @setState({trades: trades})
 
   _onSummaryChange: =>
-    console.log "CHANGE_SUMMARY!!"
     summaries = TradesSummaryStore.getSummaries()
     @setState({summaries: summaries})
 
   _onPSummaryChange: =>
-    console.log "CHANGE_PSUMMARY!!"
     psummaries = TradesProdSummaryStore.getPSummaries()
     @setState({psummaries: psummaries})
 

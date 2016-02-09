@@ -11,7 +11,6 @@ class ProductSummaryLog extends React.Component
     }
 
   _onPSummaryChange: =>
-    console.log "CHANGE_PSUMMARY!!"
     psummaries = TradesProdSummaryStore.getPSummaries()
     @setState({psummaries: psummaries})
 

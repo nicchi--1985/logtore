@@ -11,7 +11,6 @@ class SummaryLog extends React.Component
     }
 
   _onSummaryChange: =>
-    console.log "CHANGE_SUMMARY!!"
     summaries = TradesSummaryStore.getSummaries()
     @setState({summaries: summaries})
 

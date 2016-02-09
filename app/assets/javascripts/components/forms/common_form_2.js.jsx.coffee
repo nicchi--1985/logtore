@@ -65,7 +65,6 @@ class CommonForm2 extends React.Component
         ``
 
   render: ->
-    console.log @props
     `<div className="commonForm2WP">
       {this.renderFormForAction()}
     </div>`
