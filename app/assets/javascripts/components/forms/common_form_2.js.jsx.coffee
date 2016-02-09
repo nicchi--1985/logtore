@@ -52,13 +52,13 @@ class CommonForm2 extends React.Component
             <input type="number" pattern="\d*" placeholder="数量(株)" ref="invest_quantity" />
           </div>
           <div className="textFieldWP">
-            <input type="number" pattern="\d*" placeholder="利益(円)" ref="benefit_amount" />
+            <input type="number" placeholder="利益(円)" ref="benefit_amount" />
           </div>
           <div className="textFieldWP">
-            <input type="number" pattern="\d*" placeholder="騰落率(%)" ref="change_rate" />
+            <input type="number" placeholder="騰落率(%)" ref="change_rate" />
           </div>
           <div className="textFieldWP">
-            <input type="number" pattern="\d*" placeholder="利益率(%)" ref="benefit_rate" />
+            <input type="number" placeholder="利益率(%)" ref="benefit_rate" />
           </div>
         </div>`
       else
